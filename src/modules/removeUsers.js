@@ -8,7 +8,10 @@ export const removeUsers = () => {
             const tr = e.target.closest('tr')
             const id = tr.dataset.key
 
-            userService.removeUser(id).then(res => {
+            userService.sendUsers({
+                url: `http://localhost:4545/users/${id}`,
+                method: 'DELETE'
+            }).then(res => {
                 userService.getUsers().then(users => {
                     render(users)
                 })

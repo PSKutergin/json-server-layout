@@ -8,10 +8,12 @@ export const sortUsers = () => {
     headerSortIsChildren.style.cursor = 'pointer';
 
     headerSortIsChildren.addEventListener('click', () => {
-        userService.getSortUsers({
+        const sortOptions = {
             name: 'children',
             value: isSort ? 'asc' : 'desc'
-        }).then(users => {
+        }
+
+        userService.getUsers(`http://localhost:4545/users?_sort=${sortOptions.name}&_order=${sortOptions.value}`).then(users => {
             render(users);
         });
 

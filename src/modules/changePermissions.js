@@ -9,7 +9,11 @@ export const changePermissions = () => {
             const input = tr.querySelector('input[type=checkbox]')
             const id = tr.dataset.key
 
-            userService.changeUser(id, { permissions: input.checked }).then(res => {
+            userService.sendUsers({
+                url: `http://localhost:4545/users/${id}`,
+                data: { permissions: input.checked },
+                method: 'PATCH'
+            }).then(res => {
                 userService.getUsers().then(users => {
                     render(users)
                 })

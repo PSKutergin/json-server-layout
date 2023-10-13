@@ -5,7 +5,7 @@ export const searchUsers = () => {
     const input = document.getElementById('search-input');
 
     const debounceSearch = debounce(() => {
-        userService.getSearchUsers(input.value).then(users => {
+        userService.getUsers(`http://localhost:4545/users?name_like=${input.value}`).then(users => {
             render(users);
         })
     }, 500)

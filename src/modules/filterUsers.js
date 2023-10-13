@@ -6,13 +6,13 @@ export const filterUsers = () => {
     const btnIsAll = document.getElementById('btn-isAll');
 
     btnIsChildren.addEventListener('click', () => {
-        userService.filterUsers('children').then(users => {
+        userService.getUsers(`http://localhost:4545/users?children=true`).then(users => {
             render(users);
         })
     });
 
     btnIsPermissions.addEventListener('click', () => {
-        userService.filterUsers('permissions').then(users => {
+        userService.getUsers(`http://localhost:4545/users?permissions=true`).then(users => {
             render(users);
         })
     });

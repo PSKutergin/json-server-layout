@@ -12,17 +12,14 @@ export const editUsers = () => {
             const tr = e.target.closest('tr')
             const id = tr.dataset.key
 
-            userService.getUser(id).then(user => {
-                nameInput.value = user.name;
-                emailInput.value = user.email;
-                childrenInput.value = user.children;
+            userService.getUsers(`http://localhost:4545/users/${id}`)
+                .then(user => {
+                    nameInput.value = user.name;
+                    emailInput.value = user.email;
+                    childrenInput.value = user.children;
 
-                form.dataset.method = id
-
-                // userService.getUsers().then(users => {
-                //     render(users)
-                // })
-            })
+                    form.dataset.method = id
+                })
         }
     });
 
@@ -38,7 +35,11 @@ export const editUsers = () => {
                 permissions: false
             };
 
-            userService.editUser(id, user).then(() => {
+            userService.sendUsers({
+                url: `http://localhost:4545/users/${id}`,
+                data: user,
+                method: 'PUT'
+            }).then(() => {
                 userService.getUsers().then(users => {
                     render(users)
                     form.reset()

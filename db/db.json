@@ -1,11 +1,11 @@
 {
   "users": [
     {
-      "id": 0,
       "name": "Mark",
-      "email": "otto@gmail.com",
+      "email": "otto@gmail.ru",
       "children": true,
-      "permissions": false
+      "permissions": false,
+      "id": 0
     },
     {
       "id": 1,
@@ -20,20 +20,6 @@
       "children": true,
       "permissions": false,
       "id": 2
-    },
-    {
-      "name": "Pashka",
-      "email": "aaa@csd",
-      "children": true,
-      "permissions": false,
-      "id": 4
-    },
-    {
-      "name": "Sonya",
-      "email": "dvs@svd",
-      "children": false,
-      "permissions": false,
-      "id": 5
     }
   ]
 }
