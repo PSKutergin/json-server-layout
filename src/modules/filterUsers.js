@@ -12,9 +12,13 @@ export const filterUsers = () => {
     });
 
     btnIsPermissions.addEventListener('click', () => {
-        userService.getUsers(`http://localhost:4545/users?permissions=true`).then(users => {
-            render(users);
-        })
+        userService.getUsers(`http://localhost:4545/users?permissions=true`)
+            .then(users => {
+                render(users);
+            })
+            .catch(error => {
+                console.log(error.message);
+            })
     });
 
     btnIsAll.addEventListener('click', () => {
